@@ -4,6 +4,9 @@ export interface Story {
   title: string;
   era: string;
   eraIcon: string;
+  region: string;
+  topic: string;
+  subCategory: string;
   coverImage: string;
   heroImage: string;
   description: string;
@@ -14,6 +17,7 @@ export interface Story {
   tags: string[];
   publishedDate: string;
   difficulty: 'beginner' | 'intermediate' | 'advanced';
+  length: 'quick' | 'standard' | 'deep';
 }
 
 export interface Chapter {
@@ -30,6 +34,9 @@ export const stories: Story[] = [
     title: 'The Rise and Fall of the Roman Empire',
     era: 'Ancient',
     eraIcon: '🏛️',
+    region: 'Europe',
+    topic: 'Empires & Kings',
+    subCategory: 'Roman Empire',
     coverImage: '/placeholder.svg',
     heroImage: '/placeholder.svg',
     description: 'From humble republic to mighty empire, discover how Rome shaped the ancient world and left a legacy that echoes through millennia.',
@@ -90,7 +97,8 @@ In 476 CE, the last Western Roman Emperor was deposed by Germanic chieftain Odoa
     ],
     tags: ['rome', 'empire', 'caesar', 'ancient', 'republic'],
     publishedDate: '2024-01-15',
-    difficulty: 'beginner'
+    difficulty: 'beginner',
+    length: 'standard'
   },
   {
     id: 'ancient-egypt',
@@ -98,6 +106,9 @@ In 476 CE, the last Western Roman Emperor was deposed by Germanic chieftain Odoa
     title: 'Mysteries of Ancient Egypt',
     era: 'Ancient',
     eraIcon: '🏛️',
+    region: 'Africa',
+    topic: 'Empires & Kings',
+    subCategory: 'Egyptian Dynasties',
     coverImage: '/placeholder.svg',
     heroImage: '/placeholder.svg',
     description: 'Uncover the secrets of pharaohs, pyramids, and the Nile civilization that fascinated the world for over 3,000 years.',
@@ -158,7 +169,8 @@ Mysteries remain. How exactly were the pyramids built? What happened to Nefertit
     ],
     tags: ['egypt', 'pharaohs', 'pyramids', 'ancient', 'nile'],
     publishedDate: '2024-01-16',
-    difficulty: 'beginner'
+    difficulty: 'beginner',
+    length: 'standard'
   },
   {
     id: 'greek-mythology',
@@ -166,6 +178,9 @@ Mysteries remain. How exactly were the pyramids built? What happened to Nefertit
     title: 'Gods, Heroes, and Legends of Ancient Greece',
     era: 'Ancient',
     eraIcon: '🏛️',
+    region: 'Europe',
+    topic: 'Religion & Myth',
+    subCategory: 'Greek Mythology',
     coverImage: '/placeholder.svg',
     heroImage: '/placeholder.svg',
     description: 'Journey through Mount Olympus and beyond, exploring the myths that shaped Western culture and still captivate imaginations.',
@@ -186,7 +201,8 @@ Zeus grew up in secret on the island of Crete. When he reached maturity, he retu
     ],
     tags: ['greece', 'mythology', 'zeus', 'ancient', 'heroes'],
     publishedDate: '2024-01-17',
-    difficulty: 'beginner'
+    difficulty: 'beginner',
+    length: 'standard'
   },
   {
     id: 'black-death',
@@ -194,6 +210,9 @@ Zeus grew up in secret on the island of Crete. When he reached maturity, he retu
     title: 'The Black Death: Plague That Changed Europe',
     era: 'Medieval',
     eraIcon: '⚔️',
+    region: 'Europe',
+    topic: 'Disasters',
+    subCategory: 'Epidemics',
     coverImage: '/placeholder.svg',
     heroImage: '/placeholder.svg',
     description: 'The devastating pandemic that killed millions and transformed medieval society forever.',
@@ -214,7 +233,8 @@ Medieval people had no understanding of bacteria or how disease spread. They bla
     ],
     tags: ['plague', 'medieval', 'pandemic', 'europe', 'disease'],
     publishedDate: '2024-01-18',
-    difficulty: 'intermediate'
+    difficulty: 'intermediate',
+    length: 'standard'
   },
   {
     id: 'samurai-warriors',
@@ -222,6 +242,9 @@ Medieval people had no understanding of bacteria or how disease spread. They bla
     title: 'Way of the Samurai: Honor and the Blade',
     era: 'Medieval',
     eraIcon: '⚔️',
+    region: 'Asia',
+    topic: 'Wars & Battles',
+    subCategory: 'Medieval Japan',
     coverImage: '/placeholder.svg',
     heroImage: '/placeholder.svg',
     description: 'Explore the code of bushido and the legendary warriors who shaped feudal Japan.',
@@ -242,7 +265,8 @@ The samurai became Japan's ruling class, combining martial prowess with administ
     ],
     tags: ['samurai', 'japan', 'bushido', 'medieval', 'warriors'],
     publishedDate: '2024-01-19',
-    difficulty: 'intermediate'
+    difficulty: 'intermediate',
+    length: 'standard'
   },
   {
     id: 'crusades',
@@ -250,6 +274,9 @@ The samurai became Japan's ruling class, combining martial prowess with administ
     title: 'The Crusades: Holy Wars and Cultural Exchange',
     era: 'Medieval',
     eraIcon: '⚔️',
+    region: 'Middle East',
+    topic: 'Wars & Battles',
+    subCategory: 'Crusades',
     coverImage: '/placeholder.svg',
     heroImage: '/placeholder.svg',
     description: 'Religious warfare, political intrigue, and unexpected cultural connections between East and West.',
@@ -270,7 +297,8 @@ The First Crusade (1096-1099) succeeded against odds, capturing Jerusalem in 109
     ],
     tags: ['crusades', 'medieval', 'jerusalem', 'knights', 'religious-war'],
     publishedDate: '2024-01-20',
-    difficulty: 'advanced'
+    difficulty: 'advanced',
+    length: 'standard'
   },
   {
     id: 'leonardo-da-vinci',
@@ -278,6 +306,9 @@ The First Crusade (1096-1099) succeeded against odds, capturing Jerusalem in 109
     title: 'Leonardo da Vinci: Renaissance Genius',
     era: 'Renaissance',
     eraIcon: '🎨',
+    region: 'Europe',
+    topic: 'Arts & Culture',
+    subCategory: 'Italian Renaissance',
     coverImage: '/placeholder.svg',
     heroImage: '/placeholder.svg',
     description: 'Artist, inventor, scientist—discover the ultimate Renaissance man whose curiosity knew no bounds.',
@@ -298,7 +329,8 @@ According to legend, Leonardo's angel in Verrocchio's "Baptism of Christ" was so
     ],
     tags: ['leonardo', 'renaissance', 'art', 'science', 'invention'],
     publishedDate: '2024-01-21',
-    difficulty: 'beginner'
+    difficulty: 'beginner',
+    length: 'standard'
   },
   {
     id: 'printing-press',
@@ -306,6 +338,9 @@ According to legend, Leonardo's angel in Verrocchio's "Baptism of Christ" was so
     title: 'The Printing Press: Revolution in Communication',
     era: 'Renaissance',
     eraIcon: '🎨',
+    region: 'Europe',
+    topic: 'Science & Tech',
+    subCategory: 'Printing Press',
     coverImage: '/placeholder.svg',
     heroImage: '/placeholder.svg',
     description: 'How Gutenberg\'s invention transformed knowledge, religion, and society.',
@@ -326,7 +361,8 @@ Various civilizations had invented printing—the Chinese used woodblock printin
     ],
     tags: ['printing', 'gutenberg', 'renaissance', 'technology', 'books'],
     publishedDate: '2024-01-22',
-    difficulty: 'intermediate'
+    difficulty: 'intermediate',
+    length: 'standard'
   },
   {
     id: 'age-of-exploration',
@@ -334,6 +370,9 @@ Various civilizations had invented printing—the Chinese used woodblock printin
     title: 'Age of Exploration: Discovering the World',
     era: 'Renaissance',
     eraIcon: '🎨',
+    region: 'Americas',
+    topic: 'Exploration',
+    subCategory: 'Age of Sail',
     coverImage: '/placeholder.svg',
     heroImage: '/placeholder.svg',
     description: 'Brave sailors, new continents, and the era that connected the globe forever.',
@@ -354,7 +393,8 @@ Portugal led the way under Prince Henry the Navigator, who sponsored expeditions
     ],
     tags: ['exploration', 'columbus', 'renaissance', 'discovery', 'ships'],
     publishedDate: '2024-01-23',
-    difficulty: 'intermediate'
+    difficulty: 'intermediate',
+    length: 'standard'
   },
   {
     id: 'world-war-one',
@@ -362,6 +402,9 @@ Portugal led the way under Prince Henry the Navigator, who sponsored expeditions
     title: 'The Great War: World War I',
     era: 'Modern',
     eraIcon: '🌍',
+    region: 'Europe',
+    topic: 'Wars & Battles',
+    subCategory: 'World Wars Era',
     coverImage: '/placeholder.svg',
     heroImage: '/placeholder.svg',
     description: 'The war that ended empires, redrew borders, and changed warfare forever.',
@@ -382,7 +425,8 @@ Within weeks, Europe's great powers were at war. What began as a regional confli
     ],
     tags: ['wwi', 'war', 'modern', 'trenches', 'europe'],
     publishedDate: '2024-01-24',
-    difficulty: 'advanced'
+    difficulty: 'advanced',
+    length: 'deep'
   },
   {
     id: 'space-race',
@@ -390,6 +434,9 @@ Within weeks, Europe's great powers were at war. What began as a regional confli
     title: 'The Space Race: Reaching for the Stars',
     era: 'Modern',
     eraIcon: '🌍',
+    region: 'Americas',
+    topic: 'Science & Tech',
+    subCategory: 'Space Race',
     coverImage: '/placeholder.svg',
     heroImage: '/placeholder.svg',
     description: 'Cold War rivalry that propelled humanity into the cosmos and to the Moon.',
@@ -410,7 +457,8 @@ President Eisenhower responded by creating NASA and dramatically increasing fund
     ],
     tags: ['space', 'cold-war', 'modern', 'nasa', 'moon'],
     publishedDate: '2024-01-25',
-    difficulty: 'beginner'
+    difficulty: 'beginner',
+    length: 'standard'
   },
   {
     id: 'digital-revolution',
@@ -418,6 +466,9 @@ President Eisenhower responded by creating NASA and dramatically increasing fund
     title: 'The Digital Revolution: Computing Changes Everything',
     era: 'Modern',
     eraIcon: '🌍',
+    region: 'Americas',
+    topic: 'Science & Tech',
+    subCategory: 'Digital Revolution',
     coverImage: '/placeholder.svg',
     heroImage: '/placeholder.svg',
     description: 'From room-sized computers to smartphones—the technology transformation of our era.',
@@ -438,6 +489,7 @@ By the mid-1970s, computers small and affordable enough for individuals began ap
     ],
     tags: ['technology', 'computers', 'modern', 'internet', 'digital'],
     publishedDate: '2024-01-26',
-    difficulty: 'beginner'
+    difficulty: 'beginner',
+    length: 'standard'
   }
 ];
