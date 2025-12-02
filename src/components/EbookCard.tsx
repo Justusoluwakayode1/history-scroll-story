@@ -30,8 +30,8 @@ export const EbookCard = ({
 }: EbookCardProps) => {
   return (
     <Card className="group overflow-hidden border border-border bg-card shadow-[var(--shadow-card)] transition-all duration-300 hover:shadow-[var(--shadow-card-hover)] hover:scale-[1.02] hover:-translate-y-1">
-      {/* Cover Image */}
-      <Link to={`/story/${slug}`} className="block relative aspect-[3/2] overflow-hidden">
+      {/* Cover Image - Smaller */}
+      <Link to={`/story/${slug}`} className="block relative aspect-[4/3] overflow-hidden">
         <img
           src={coverImage}
           alt={title}
@@ -40,46 +40,41 @@ export const EbookCard = ({
         <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/0 to-black/0 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
       </Link>
 
-      {/* Content */}
-      <div className="p-5 space-y-4">
+      {/* Content - More Compact */}
+      <div className="p-3 space-y-2.5">
         {/* Era Badge */}
-        <div className="flex items-center gap-2 text-sm font-medium text-muted-foreground">
-          <span className="text-lg">{eraIcon}</span>
-          <span className="uppercase tracking-wider text-xs">{era}</span>
+        <div className="flex items-center gap-1.5 text-sm font-medium text-muted-foreground">
+          <span className="text-base">{eraIcon}</span>
+          <span className="uppercase tracking-wider text-[10px]">{era}</span>
         </div>
 
         {/* Title */}
         <Link to={`/story/${slug}`}>
-          <h3 className="font-serif text-xl font-bold leading-tight text-foreground group-hover:text-primary transition-colors line-clamp-2">
+          <h3 className="font-serif text-base font-bold leading-snug text-foreground group-hover:text-primary transition-colors line-clamp-2 min-h-[2.5rem]">
             {title}
           </h3>
         </Link>
 
-        {/* Description */}
-        <p className="text-sm text-muted-foreground line-clamp-2 leading-relaxed">
-          {description}
-        </p>
-
-        {/* Meta Info */}
-        <div className="flex items-center gap-4 text-xs text-muted-foreground">
+        {/* Meta Info - Condensed */}
+        <div className="flex items-center gap-3 text-[10px] text-muted-foreground">
           <div className="flex items-center gap-1">
-            <Clock className="h-3.5 w-3.5" />
-            <span>{readTime} min</span>
+            <Clock className="h-3 w-3" />
+            <span>{readTime}m</span>
           </div>
           <div className="flex items-center gap-1">
-            <Star className="h-3.5 w-3.5 fill-gold text-gold" />
+            <Star className="h-3 w-3 fill-gold text-gold" />
             <span>{rating}</span>
           </div>
           <div className="flex items-center gap-1">
-            <BookOpen className="h-3.5 w-3.5" />
-            <span>{chapters} chapters</span>
+            <BookOpen className="h-3 w-3" />
+            <span>{chapters}ch</span>
           </div>
         </div>
 
-        {/* CTA Button */}
+        {/* CTA Button - Smaller */}
         <Link to={`/story/${slug}`} className="block">
-          <Button className="w-full bg-primary hover:bg-primary-light text-primary-foreground transition-colors">
-            Read Story →
+          <Button size="sm" className="w-full bg-primary hover:bg-primary-light text-primary-foreground transition-colors text-xs h-8">
+            Read →
           </Button>
         </Link>
       </div>
