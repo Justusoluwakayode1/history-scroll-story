@@ -1,6 +1,8 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import { Header } from "@/components/Header";
 import { EbookCard } from "@/components/EbookCard";
+import { FeaturedStory } from "@/components/FeaturedStory";
 import { stories } from "@/data/stories";
 import { Button } from "@/components/ui/button";
 import { SearchDialog } from "@/components/SearchDialog";
@@ -110,6 +112,9 @@ const Index = () => {
         </div>
       </section>
 
+      {/* Featured Story - Dynamic Discovery */}
+      <FeaturedStory />
+
       {/* Library Grid */}
       <section id="library" className="container mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 lg:py-20">
         <div className="space-y-8">
@@ -170,18 +175,20 @@ const Index = () => {
               Create a free account to bookmark stories, track your reading progress,
               and get personalized recommendations.
             </p>
-            <Button
-              size="lg"
-              variant="outline"
-              className="border-2 border-primary text-primary hover:bg-primary hover:text-primary-foreground px-8 h-12 text-base font-medium"
-            >
-              Create Free Account
-            </Button>
+            <Link to="/auth">
+              <Button
+                size="lg"
+                variant="outline"
+                className="border-2 border-primary text-primary hover:bg-primary hover:text-primary-foreground px-8 h-12 text-base font-medium"
+              >
+                Create Free Account
+              </Button>
+            </Link>
             <p className="text-sm text-muted-foreground">
               Already have an account?{" "}
-              <a href="#" className="text-primary hover:underline font-medium">
+              <Link to="/auth" className="text-primary hover:underline font-medium">
                 Sign in
-              </a>
+              </Link>
             </p>
           </div>
         </div>
@@ -201,24 +208,24 @@ const Index = () => {
               <h4 className="font-medium text-foreground">Library</h4>
               <ul className="space-y-2 text-sm text-muted-foreground">
                 <li>
-                  <a href="#" className="hover:text-foreground transition-colors">
+                  <Link to="/library" className="hover:text-foreground transition-colors">
                     All Stories
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a href="#" className="hover:text-foreground transition-colors">
+                  <Link to="/library" className="hover:text-foreground transition-colors">
                     Ancient History
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a href="#" className="hover:text-foreground transition-colors">
+                  <Link to="/library" className="hover:text-foreground transition-colors">
                     Medieval Times
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a href="#" className="hover:text-foreground transition-colors">
+                  <Link to="/library" className="hover:text-foreground transition-colors">
                     Modern Era
-                  </a>
+                  </Link>
                 </li>
               </ul>
             </div>
@@ -226,14 +233,14 @@ const Index = () => {
               <h4 className="font-medium text-foreground">Company</h4>
               <ul className="space-y-2 text-sm text-muted-foreground">
                 <li>
-                  <a href="#" className="hover:text-foreground transition-colors">
+                  <Link to="/about" className="hover:text-foreground transition-colors">
                     About Us
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a href="#" className="hover:text-foreground transition-colors">
+                  <Link to="/contact" className="hover:text-foreground transition-colors">
                     Contact
-                  </a>
+                  </Link>
                 </li>
                 <li>
                   <a href="#" className="hover:text-foreground transition-colors">
