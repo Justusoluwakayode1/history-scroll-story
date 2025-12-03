@@ -1,10 +1,11 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
-import { BookOpen, Menu, X, Search, User } from "lucide-react";
+import { Link, useNavigate } from "react-router-dom";
+import { BookOpen, Menu, X, User } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 export const Header = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const navigate = useNavigate();
 
   return (
     <header className="sticky top-0 z-50 w-full border-b border-border bg-card/95 backdrop-blur supports-[backdrop-filter]:bg-card/80">
@@ -44,10 +45,12 @@ export const Header = () => {
 
         {/* Actions */}
         <div className="hidden md:flex items-center gap-3">
-          <Button variant="ghost" size="icon" className="rounded-full">
-            <Search className="h-5 w-5" />
-          </Button>
-          <Button variant="outline" size="sm" className="gap-2">
+          <Button 
+            variant="outline" 
+            size="sm" 
+            className="gap-2"
+            onClick={() => navigate("/auth")}
+          >
             <User className="h-4 w-4" />
             Sign In
           </Button>
@@ -93,12 +96,15 @@ export const Header = () => {
             >
               Contact
             </Link>
-            <div className="pt-3 border-t border-border flex gap-2">
-              <Button variant="outline" className="flex-1 gap-2">
-                <Search className="h-4 w-4" />
-                Search
-              </Button>
-              <Button variant="outline" className="flex-1 gap-2">
+            <div className="pt-3 border-t border-border">
+              <Button 
+                variant="outline" 
+                className="w-full gap-2"
+                onClick={() => {
+                  setMobileMenuOpen(false);
+                  navigate("/auth");
+                }}
+              >
                 <User className="h-4 w-4" />
                 Sign In
               </Button>
