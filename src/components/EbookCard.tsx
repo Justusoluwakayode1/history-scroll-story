@@ -17,7 +17,6 @@ interface EbookCardProps {
 }
 
 export const EbookCard = ({
-  id,
   slug,
   title,
   era,
@@ -26,57 +25,48 @@ export const EbookCard = ({
   readTime,
   rating,
   chapters,
-  description,
 }: EbookCardProps) => {
   return (
-    <Card className="group overflow-hidden border border-border bg-card shadow-[var(--shadow-card)] transition-all duration-300 hover:shadow-[var(--shadow-card-hover)] hover:scale-[1.02] hover:-translate-y-1">
-      {/* Cover Image - Smaller */}
-      <Link to={`/story/${slug}`} className="block relative aspect-[4/3] overflow-hidden">
+    <Card className="group overflow-hidden border border-border bg-card shadow-sm transition-all duration-300 hover:shadow-md hover:scale-[1.02]">
+      {/* Cover Image - Tiny */}
+      <Link to={`/story/${slug}`} className="block relative aspect-[3/2] overflow-hidden">
         <img
           src={coverImage}
           alt={title}
           className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/0 to-black/0 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
       </Link>
 
-      {/* Content - More Compact */}
-      <div className="p-3 space-y-2.5">
+      {/* Content - Ultra Compact */}
+      <div className="p-2 space-y-1">
         {/* Era Badge */}
-        <div className="flex items-center gap-1.5 text-sm font-medium text-muted-foreground">
-          <span className="text-base">{eraIcon}</span>
-          <span className="uppercase tracking-wider text-[10px]">{era}</span>
+        <div className="flex items-center gap-1 text-muted-foreground">
+          <span className="text-xs">{eraIcon}</span>
+          <span className="uppercase tracking-wider text-[8px]">{era}</span>
         </div>
 
         {/* Title */}
         <Link to={`/story/${slug}`}>
-          <h3 className="font-serif text-base font-bold leading-snug text-foreground group-hover:text-primary transition-colors line-clamp-2 min-h-[2.5rem]">
+          <h3 className="font-serif text-xs font-semibold leading-tight text-foreground group-hover:text-primary transition-colors line-clamp-2">
             {title}
           </h3>
         </Link>
 
-        {/* Meta Info - Condensed */}
-        <div className="flex items-center gap-3 text-[10px] text-muted-foreground">
-          <div className="flex items-center gap-1">
-            <Clock className="h-3 w-3" />
+        {/* Meta Info */}
+        <div className="flex items-center gap-2 text-[8px] text-muted-foreground">
+          <div className="flex items-center gap-0.5">
+            <Clock className="h-2.5 w-2.5" />
             <span>{readTime}m</span>
           </div>
-          <div className="flex items-center gap-1">
-            <Star className="h-3 w-3 fill-gold text-gold" />
+          <div className="flex items-center gap-0.5">
+            <Star className="h-2.5 w-2.5 fill-gold text-gold" />
             <span>{rating}</span>
           </div>
-          <div className="flex items-center gap-1">
-            <BookOpen className="h-3 w-3" />
-            <span>{chapters}ch</span>
+          <div className="flex items-center gap-0.5">
+            <BookOpen className="h-2.5 w-2.5" />
+            <span>{chapters}</span>
           </div>
         </div>
-
-        {/* CTA Button - Smaller */}
-        <Link to={`/story/${slug}`} className="block">
-          <Button size="sm" className="w-full bg-primary hover:bg-primary-light text-primary-foreground transition-colors text-xs h-8">
-            Read →
-          </Button>
-        </Link>
       </div>
     </Card>
   );
