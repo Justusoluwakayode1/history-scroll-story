@@ -21,6 +21,19 @@ export const Header = () => {
           </div>
         </Link>
 
+        {/* Home Button - Prominent */}
+        <div className="hidden md:flex items-center">
+          <Button
+            variant="ghost"
+            size="sm"
+            onClick={() => navigate("/")}
+            className="gap-2 font-medium"
+          >
+            <BookOpen className="h-4 w-4" />
+            Home
+          </Button>
+        </div>
+
         {/* Desktop Navigation */}
         <div className="hidden md:flex items-center gap-6">
           <Link 
@@ -75,6 +88,17 @@ export const Header = () => {
       {mobileMenuOpen && (
         <div className="md:hidden border-t border-border bg-card animate-fade-in">
           <div className="container mx-auto px-4 py-4 space-y-3">
+            <Button
+              variant="ghost"
+              className="w-full justify-start gap-2 font-medium"
+              onClick={() => {
+                setMobileMenuOpen(false);
+                navigate("/");
+              }}
+            >
+              <BookOpen className="h-4 w-4" />
+              Home
+            </Button>
             <Link
               to="/library"
               className="block px-4 py-2 text-sm font-medium rounded-lg hover:bg-muted transition-colors"

@@ -34,6 +34,12 @@ export const EbookCard = ({
           src={coverImage}
           alt={title}
           className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+          loading="lazy"
+          onError={(e) => {
+            // Fallback for broken WordPress image URLs
+            const target = e.target as HTMLImageElement;
+            target.src = '/placeholder.svg';
+          }}
         />
       </Link>
 

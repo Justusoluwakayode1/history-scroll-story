@@ -65,6 +65,12 @@ export const FeaturedStory = () => {
                 src={featured.coverImage}
                 alt={featured.title}
                 className="w-full h-full object-cover"
+                loading="lazy"
+                onError={(e) => {
+                  // Fallback for broken WordPress image URLs
+                  const target = e.target as HTMLImageElement;
+                  target.src = '/placeholder.svg';
+                }}
               />
               <div className="absolute inset-0 bg-gradient-to-t md:bg-gradient-to-r from-card via-card/50 to-transparent" />
             </div>

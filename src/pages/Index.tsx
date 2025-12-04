@@ -164,8 +164,8 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Call to Action */}
-      <section className="border-t border-border bg-gradient-to-br from-primary/5 via-background to-secondary/5">
+      {/* Call to Action - Gold Theme */}
+      <section className="border-t border-border bg-gradient-to-br from-[hsl(41,48%,55%)]/20 via-[hsl(41,48%,49%)]/15 to-[hsl(41,60%,60%)]/20">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-20">
           <div className="max-w-3xl mx-auto text-center space-y-6">
             <h2 className="text-3xl sm:text-4xl font-serif font-bold text-foreground">
@@ -179,14 +179,14 @@ const Index = () => {
               <Button
                 size="lg"
                 variant="outline"
-                className="border-2 border-primary text-primary hover:bg-primary hover:text-primary-foreground px-8 h-12 text-base font-medium"
+                className="border-2 border-[hsl(41,48%,49%)] text-[hsl(41,48%,40%)] hover:bg-[hsl(41,48%,49%)] hover:text-white px-8 h-12 text-base font-medium"
               >
                 Create Free Account
               </Button>
             </Link>
             <p className="text-sm text-muted-foreground">
               Already have an account?{" "}
-              <Link to="/auth" className="text-primary hover:underline font-medium">
+              <Link to="/auth" className="text-[hsl(41,48%,40%)] hover:underline font-medium">
                 Sign in
               </Link>
             </p>

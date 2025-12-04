@@ -25,7 +25,7 @@ const Auth = () => {
   };
 
   return (
-    <div className="min-h-screen bg-background flex">
+    <div className="min-h-screen bg-gradient-to-br from-[hsl(41,48%,55%)]/25 via-[hsl(41,48%,49%)]/30 to-[hsl(41,60%,60%)]/25 paper-texture flex">
       {/* Left Panel - Form */}
       <div className="flex-1 flex flex-col justify-center px-4 py-12 sm:px-6 lg:px-20 xl:px-24">
         <div className="mx-auto w-full max-w-sm">
@@ -37,10 +37,10 @@ const Auth = () => {
           </Link>
 
           <div className="flex items-center gap-2 mb-8">
-            <div className="rounded-lg bg-primary p-2">
-              <BookOpen className="h-5 w-5 text-primary-foreground" />
+            <div className="rounded-lg bg-[hsl(41,48%,49%)] p-2">
+              <BookOpen className="h-5 w-5 text-white" />
             </div>
-            <span className="text-xl font-serif font-bold text-primary">HistoryHub</span>
+            <span className="text-xl font-serif font-bold text-[hsl(41,48%,40%)]">HistoryHub</span>
           </div>
 
           <h1 className="text-2xl font-serif font-bold text-foreground mb-2">
@@ -99,7 +99,10 @@ const Auth = () => {
               </div>
             </div>
 
-            <Button type="submit" className="w-full">
+            <Button 
+              type="submit" 
+              className="w-full bg-[hsl(41,48%,49%)] hover:bg-[hsl(41,48%,45%)] text-white border-0"
+            >
               {isSignUp ? "Create Account" : "Sign In"}
             </Button>
           </form>
@@ -108,7 +111,7 @@ const Auth = () => {
             {isSignUp ? "Already have an account?" : "Don't have an account?"}{" "}
             <button
               onClick={() => setIsSignUp(!isSignUp)}
-              className="font-medium text-primary hover:text-primary-light transition-colors"
+              className="font-medium text-[hsl(41,48%,40%)] hover:text-[hsl(41,48%,35%)] transition-colors"
             >
               {isSignUp ? "Sign in" : "Create one"}
             </button>

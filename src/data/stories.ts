@@ -7,7 +7,18 @@ export interface Story {
   region: string;
   topic: string;
   subCategory: string;
+  /**
+   * Primary ebook cover image.
+   * WordPress Integration: Accepts full WordPress media URLs (e.g., https://yoursite.com/wp-content/uploads/...)
+   * Can also handle relative paths or placeholder images.
+   * WordPress REST API typically provides: media_details.sizes.full.source_url or guid.rendered
+   */
   coverImage: string;
+  /**
+   * Large hero/banner image shown at the top of the reader.
+   * WordPress Integration: Accepts full WordPress media URLs from the media library.
+   * Can be the same as coverImage or a separate high-resolution banner image.
+   */
   heroImage: string;
   description: string;
   author: string;
@@ -25,6 +36,26 @@ export interface Chapter {
   title: string;
   content: string;
   readTime: number;
+  /**
+   * Optional chapter-specific images from WordPress.
+   * WordPress Integration: Array of full WordPress media URLs.
+   * WordPress REST API provides images in various formats:
+   * - Full URL: media_details.sizes.full.source_url
+   * - Featured image: _embedded['wp:featuredmedia'][0].source_url
+   * - Gallery images: ACF fields or custom meta fields
+   * All URLs are automatically handled whether they're absolute or relative.
+   */
+  images?: string[];
+  /**
+   * Optional embedded YouTube videos for this chapter.
+   * WordPress Integration: Accepts YouTube links in multiple formats from WordPress:
+   * - Full URL: https://www.youtube.com/watch?v=VIDEO_ID
+   * - Short URL: https://youtu.be/VIDEO_ID
+   * - Embed URL: https://www.youtube.com/embed/VIDEO_ID
+   * - Just the video ID: VIDEO_ID (will be converted to embed URL)
+   * WordPress custom fields or ACF can store these as strings or arrays.
+   */
+  youtubeLinks?: string[];
 }
 
 export const stories: Story[] = [

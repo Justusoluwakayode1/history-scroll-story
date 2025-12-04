@@ -1,5 +1,5 @@
-import { useState } from "react";
-import { Search, X } from "lucide-react";
+import { useState, useMemo } from "react";
+import { Search, X, BookOpen, Sparkles } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
   Dialog,
@@ -9,6 +9,9 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
+import { Link } from "react-router-dom";
+import { searchStories, searchStoriesMultiWord } from "@/lib/search-utils";
+import { stories } from "@/data/stories";
 
 interface FilterOption {
   id: string;
@@ -49,6 +52,15 @@ export const SearchDialog = ({
 
   const hasActiveFilters = selectedEra !== "all" || selectedRegion !== "all" || selectedTopic !== "all" || searchQuery !== "";
 
+  // Smart search results
+  const searchResults = useMemo(() => {
+    if (!searchQuery || searchQuery.trim() === "") {
+      return [];
+    }
+    // Use multi-word search for better results
+    return searchStoriesMultiWord(searchQuery, stories);
+  }, [searchQuery]);
+
   const clearAllFilters = () => {
     onEraChange("all");
     onRegionChange("all");
@@ -82,12 +94,81 @@ export const SearchDialog = ({
           <div className="relative">
             <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
             <Input
-              placeholder="Search stories, topics, or keywords..."
+              placeholder="Search stories, topics, chapters, or keywords..."
               value={searchQuery}
               onChange={(e) => onSearchChange(e.target.value)}
               className="pl-10 h-12 text-base"
             />
           </div>
+
+          {/* Smart Search Results */}
+          {searchQuery && searchQuery.trim() !== "" && searchResults.length > 0 && (
+            <div className="space-y-3 border-t border-b border-border py-4">
+              <div className="flex items-center gap-2 text-sm font-medium text-foreground">
+                <Sparkles className="h-4 w-4 text-primary" />
+                Smart Search Results ({searchResults.length})
+              </div>
+              <div className="space-y-2 max-h-[300px] overflow-y-auto">
+                {searchResults.slice(0, 5).map((result) => (
+                  <Link
+                    key={result.story.id}
+                    to={`/story/${result.story.slug}`}
+                    onClick={() => setOpen(false)}
+                    className="block p-3 rounded-lg border border-border hover:bg-muted transition-colors"
+                  >
+                    <div className="flex items-start gap-3">
+                      <div className="flex-shrink-0 w-12 h-16 rounded overflow-hidden bg-muted">
+                        <img
+                          src={result.story.coverImage}
+                          alt={result.story.title}
+                          className="w-full h-full object-cover"
+                        />
+                      </div>
+                      <div className="flex-1 min-w-0">
+                        <h4 className="font-serif font-semibold text-sm text-foreground line-clamp-1 mb-1">
+                          {result.story.title}
+                        </h4>
+                        <p className="text-xs text-muted-foreground mb-1">
+                          {result.matchType === 'chapter' && result.matchedChapter
+                            ? `Chapter: ${result.matchedChapter.title}`
+                            : result.matchType === 'content'
+                            ? 'Content match'
+                            : result.matchType === 'title'
+                            ? 'Title match'
+                            : result.matchType === 'tag'
+                            ? 'Tag match'
+                            : 'Match found'}
+                        </p>
+                        <p className="text-xs text-muted-foreground line-clamp-2">
+                          {result.story.description}
+                        </p>
+                        <div className="flex items-center gap-2 mt-1 text-xs text-muted-foreground">
+                          <span>{result.story.era}</span>
+                          <span>•</span>
+                          <span>{result.story.readTime} min</span>
+                          <span>•</span>
+                          <span className="text-primary">Score: {Math.round(result.score)}</span>
+                        </div>
+                      </div>
+                    </div>
+                  </Link>
+                ))}
+              </div>
+              {searchResults.length > 5 && (
+                <p className="text-xs text-muted-foreground text-center">
+                  +{searchResults.length - 5} more results
+                </p>
+              )}
+            </div>
+          )}
+
+          {searchQuery && searchQuery.trim() !== "" && searchResults.length === 0 && (
+            <div className="text-center py-8 text-muted-foreground">
+              <BookOpen className="h-12 w-12 mx-auto mb-2 opacity-50" />
+              <p>No results found for "{searchQuery}"</p>
+              <p className="text-xs mt-1">Try different keywords or check your spelling</p>
+            </div>
+          )}
 
           {/* Era Filter */}
           <div className="space-y-2">
