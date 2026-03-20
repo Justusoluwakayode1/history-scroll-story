@@ -1,6 +1,7 @@
 import { useState, useEffect, useMemo, useRef } from "react";
 import { useParams, Link, useNavigate } from "react-router-dom";
 import { ArrowLeft, ChevronLeft, ChevronRight, Minus, Plus, Moon, Sun, BookOpen, Home, Type, ScrollText, FileText, Volume2, VolumeX } from "lucide-react";
+import { ReadingProgressBar } from "@/components/ReadingProgressBar";
 import { Button } from "@/components/ui/button";
 import { loadStoryBySlug } from "@/data/story-loader";
 import { cacheStoryForOffline } from "@/lib/offline-storage";
