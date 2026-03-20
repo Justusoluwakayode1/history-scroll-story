@@ -123,6 +123,7 @@ const About = () => {
         </div>
       </main>
     </div>
+    </PageTransition>
   );
 };
 
