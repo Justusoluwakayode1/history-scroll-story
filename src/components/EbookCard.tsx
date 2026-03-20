@@ -30,32 +30,29 @@ export const EbookCard = ({
       transition={{ duration: 0.2 }}
     >
       <Link to={`/story/${slug}`} className="group block">
-        <div className="overflow-hidden rounded-md border border-border bg-card shadow-[var(--shadow-card)] transition-shadow duration-300 hover:shadow-[var(--shadow-card-hover)]">
-          {/* Book Cover — tall ratio like real books */}
-          <div className="relative aspect-[2/3] overflow-hidden bg-muted">
+        <div className="overflow-hidden rounded-sm border border-border bg-card shadow-[var(--shadow-card)] transition-shadow duration-300 hover:shadow-[var(--shadow-card-hover)]">
+          <div className="relative aspect-[5/8] overflow-hidden bg-muted">
             <img
               src={coverImage}
               alt={title}
-              className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+              className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
               loading="lazy"
               onError={(e) => {
                 (e.target as HTMLImageElement).src = '/placeholder.svg';
               }}
             />
-            {/* Subtle overlay on hover */}
-            <div className="absolute inset-0 bg-foreground/0 group-hover:bg-foreground/5 transition-colors duration-300" />
+            <div className="absolute inset-0 bg-gradient-to-t from-foreground/12 to-transparent opacity-80" />
           </div>
 
-          {/* Info */}
-          <div className="p-2 space-y-0.5">
+          <div className="p-1.5 space-y-0.5">
             <div className="flex items-center gap-1 text-muted-foreground">
-              <span className="text-[10px]">{eraIcon}</span>
-              <span className="uppercase tracking-widest text-[7px] font-medium">{era}</span>
+              <span className="text-[9px]">{eraIcon}</span>
+              <span className="uppercase tracking-[0.18em] text-[6px] font-medium">{era}</span>
             </div>
-            <h3 className="font-serif text-[11px] font-semibold leading-tight text-foreground group-hover:text-primary transition-colors line-clamp-2">
+            <h3 className="font-serif text-[10px] font-semibold leading-tight text-foreground group-hover:text-primary transition-colors line-clamp-2">
               {title}
             </h3>
-            <div className="flex items-center gap-1.5 text-[8px] text-muted-foreground pt-0.5">
+            <div className="flex items-center gap-1 text-[7px] text-muted-foreground pt-0.5">
               <span className="flex items-center gap-0.5">
                 <Clock className="h-2 w-2" />
                 {readTime}m
