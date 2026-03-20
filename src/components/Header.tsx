@@ -1,141 +1,106 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { BookOpen, Menu, X, User } from "lucide-react";
+import { BookOpen, Menu, X, User, Search } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { motion, AnimatePresence } from "framer-motion";
 
 export const Header = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const navigate = useNavigate();
 
+  const navLinks = [
+    { to: "/", label: "Home" },
+    { to: "/library", label: "Library" },
+    { to: "/about", label: "About" },
+    { to: "/contact", label: "Contact" },
+  ];
+
   return (
     <header className="sticky top-0 z-50 w-full border-b border-border bg-card/95 backdrop-blur supports-[backdrop-filter]:bg-card/80">
-      <nav className="container mx-auto flex h-16 items-center justify-between px-4 sm:px-6 lg:px-8">
+      <nav className="container mx-auto flex h-14 items-center justify-between px-4 sm:px-6 lg:px-8">
         {/* Logo */}
-        <Link to="/" className="flex items-center gap-2 group">
-          <div className="rounded-lg bg-primary p-2 transition-transform group-hover:scale-105">
-            <BookOpen className="h-5 w-5 text-primary-foreground" />
+        <Link to="/" className="flex items-center gap-2.5 group">
+          <div className="rounded-md bg-primary p-1.5 transition-transform group-hover:scale-105">
+            <BookOpen className="h-4 w-4 text-primary-foreground" />
           </div>
-          <div className="flex flex-col">
-            <span className="text-xl font-serif font-bold text-primary">HistoryHub</span>
-            <span className="text-[10px] text-muted-foreground tracking-wide">READ HISTORY BEAUTIFULLY</span>
-          </div>
+          <span className="text-lg font-serif font-bold text-foreground tracking-tight">
+            HistoryHub
+          </span>
         </Link>
 
-        {/* Home Button - Prominent */}
-        <div className="hidden md:flex items-center">
-          <Button
-            variant="ghost"
-            size="sm"
-            onClick={() => navigate("/")}
-            className="gap-2 font-medium"
-          >
-            <BookOpen className="h-4 w-4" />
-            Home
-          </Button>
-        </div>
-
-        {/* Desktop Navigation */}
-        <div className="hidden md:flex items-center gap-6">
-          <Link 
-            to="/library" 
-            className="text-sm font-medium text-foreground/80 hover:text-foreground transition-colors"
-          >
-            Library
-          </Link>
-          <Link 
-            to="/about" 
-            className="text-sm font-medium text-foreground/80 hover:text-foreground transition-colors"
-          >
-            About
-          </Link>
-          <Link 
-            to="/contact" 
-            className="text-sm font-medium text-foreground/80 hover:text-foreground transition-colors"
-          >
-            Contact
-          </Link>
+        {/* Desktop Nav */}
+        <div className="hidden md:flex items-center gap-8">
+          {navLinks.map((link) => (
+            <Link
+              key={link.to}
+              to={link.to}
+              className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors relative after:absolute after:bottom-0 after:left-0 after:w-0 after:h-[1.5px] after:bg-secondary after:transition-all hover:after:w-full"
+            >
+              {link.label}
+            </Link>
+          ))}
         </div>
 
         {/* Actions */}
-        <div className="hidden md:flex items-center gap-3">
-          <Button 
-            variant="outline" 
-            size="sm" 
-            className="gap-2"
+        <div className="hidden md:flex items-center gap-2">
+          <Button
+            variant="ghost"
+            size="sm"
             onClick={() => navigate("/auth")}
+            className="gap-2 text-sm font-medium"
           >
             <User className="h-4 w-4" />
             Sign In
           </Button>
         </div>
 
-        {/* Mobile Menu Button */}
+        {/* Mobile toggle */}
         <Button
           variant="ghost"
           size="icon"
-          className="md:hidden"
+          className="md:hidden h-9 w-9"
           onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+          aria-label="Toggle menu"
         >
-          {mobileMenuOpen ? (
-            <X className="h-6 w-6" />
-          ) : (
-            <Menu className="h-6 w-6" />
-          )}
+          {mobileMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
         </Button>
       </nav>
 
       {/* Mobile Menu */}
-      {mobileMenuOpen && (
-        <div className="md:hidden border-t border-border bg-card animate-fade-in">
-          <div className="container mx-auto px-4 py-4 space-y-3">
-            <Button
-              variant="ghost"
-              className="w-full justify-start gap-2 font-medium"
-              onClick={() => {
-                setMobileMenuOpen(false);
-                navigate("/");
-              }}
-            >
-              <BookOpen className="h-4 w-4" />
-              Home
-            </Button>
-            <Link
-              to="/library"
-              className="block px-4 py-2 text-sm font-medium rounded-lg hover:bg-muted transition-colors"
-              onClick={() => setMobileMenuOpen(false)}
-            >
-              Library
-            </Link>
-            <Link
-              to="/about"
-              className="block px-4 py-2 text-sm font-medium rounded-lg hover:bg-muted transition-colors"
-              onClick={() => setMobileMenuOpen(false)}
-            >
-              About
-            </Link>
-            <Link
-              to="/contact"
-              className="block px-4 py-2 text-sm font-medium rounded-lg hover:bg-muted transition-colors"
-              onClick={() => setMobileMenuOpen(false)}
-            >
-              Contact
-            </Link>
-            <div className="pt-3 border-t border-border">
-              <Button 
-                variant="outline" 
-                className="w-full gap-2"
-                onClick={() => {
-                  setMobileMenuOpen(false);
-                  navigate("/auth");
-                }}
-              >
-                <User className="h-4 w-4" />
-                Sign In
-              </Button>
+      <AnimatePresence>
+        {mobileMenuOpen && (
+          <motion.div
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: "auto" }}
+            exit={{ opacity: 0, height: 0 }}
+            transition={{ duration: 0.2 }}
+            className="md:hidden border-t border-border bg-card overflow-hidden"
+          >
+            <div className="container mx-auto px-4 py-4 space-y-1">
+              {navLinks.map((link) => (
+                <Link
+                  key={link.to}
+                  to={link.to}
+                  className="block px-3 py-2.5 text-sm font-medium rounded-md hover:bg-muted transition-colors"
+                  onClick={() => setMobileMenuOpen(false)}
+                >
+                  {link.label}
+                </Link>
+              ))}
+              <div className="pt-3 border-t border-border mt-2">
+                <Button
+                  variant="outline"
+                  className="w-full gap-2"
+                  onClick={() => { setMobileMenuOpen(false); navigate("/auth"); }}
+                >
+                  <User className="h-4 w-4" />
+                  Sign In
+                </Button>
+              </div>
             </div>
-          </div>
-        </div>
-      )}
+          </motion.div>
+        )}
+      </AnimatePresence>
     </header>
   );
 };
