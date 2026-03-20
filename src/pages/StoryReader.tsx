@@ -1,6 +1,7 @@
 import { useState, useEffect, useMemo, useRef } from "react";
 import { useParams, Link, useNavigate } from "react-router-dom";
 import { ArrowLeft, ChevronLeft, ChevronRight, Minus, Plus, Moon, Sun, BookOpen, Home, Type, ScrollText, FileText, Volume2, VolumeX } from "lucide-react";
+import { ReadingProgressBar } from "@/components/ReadingProgressBar";
 import { Button } from "@/components/ui/button";
 import { loadStoryBySlug } from "@/data/story-loader";
 import { cacheStoryForOffline } from "@/lib/offline-storage";
@@ -306,6 +307,7 @@ const StoryReader = () => {
 
     return (
       <div className="min-h-screen bg-background transition-colors duration-300">
+        <ReadingProgressBar />
         <header className="sticky top-0 z-50 w-full border-b border-border bg-card/95 backdrop-blur supports-[backdrop-filter]:bg-card/80">
           <div className="container mx-auto flex h-14 items-center justify-between px-4 sm:px-6 lg:px-8">
             <div className="flex items-center gap-2">
@@ -368,6 +370,7 @@ const StoryReader = () => {
 
     return (
       <div className="min-h-screen bg-background transition-colors duration-300">
+        <ReadingProgressBar />
         <header className="sticky top-0 z-50 w-full border-b border-border bg-card/95 backdrop-blur supports-[backdrop-filter]:bg-card/80">
           <div className="container mx-auto flex h-16 items-center justify-between px-4 sm:px-6 lg:px-8">
             <div className="flex items-center gap-3">

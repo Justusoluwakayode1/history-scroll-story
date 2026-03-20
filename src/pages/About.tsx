@@ -1,8 +1,10 @@
 import { BookOpen, Users, Globe, Award, Heart, Sparkles } from "lucide-react";
 import { Header } from "@/components/Header";
+import { PageTransition } from "@/components/PageTransition";
 
 const About = () => {
   return (
+    <PageTransition>
     <div className="min-h-screen bg-gradient-to-br from-[hsl(41,50%,45%)] via-[hsl(41,48%,50%)] to-[hsl(41,55%,55%)]">
       <Header />
       
@@ -121,6 +123,7 @@ const About = () => {
         </div>
       </main>
     </div>
+    </PageTransition>
   );
 };
 

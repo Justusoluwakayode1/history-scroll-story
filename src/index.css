@@ -2,40 +2,36 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
-All colors MUST be HSL.
-*/
-
 @layer base {
   :root {
-    /* HistoryHub Design System - Historical Elegance */
+    /* HistoryHub 'Archive' Design System */
     
-    /* Base Colors - Cream Paper & Charcoal (Less White, Warmer) */
-    --background: 42 28% 92%;  /* Warmer cream, less white, more parchment-like */
-    --foreground: 210 24% 16%;  /* #1A202C Dark Charcoal */
+    /* Base — Paper & Charcoal */
+    --background: 40 33% 97%;       /* #F9F7F3 warm paper */
+    --foreground: 220 26% 14%;      /* #1F2937 deep charcoal */
 
-    /* Card & Surfaces (Less White, Warmer) */
-    --card: 42 25% 96%;  /* Warmer off-white, less stark */
-    --card-foreground: 210 24% 16%;
+    /* Card & Surfaces */
+    --card: 0 0% 100%;
+    --card-foreground: 220 26% 14%;
 
-    --popover: 42 25% 97%;  /* Warmer off-white, less stark */
-    --popover-foreground: 210 24% 16%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 220 26% 14%;
 
-    /* Primary - History Green */
-    --primary: 125 32% 25%;  /* #2C5530 Forest Green */
+    /* Primary — History Green */
+    --primary: 125 32% 25%;
     --primary-foreground: 0 0% 100%;
     --primary-light: 125 32% 35%;
     
-    /* Secondary - Aged Gold */
-    --secondary: 41 48% 49%;  /* #B68D40 Gold Accent */
+    /* Secondary — Muted Gold #B8860B */
+    --secondary: 43 91% 38%;
     --secondary-foreground: 0 0% 100%;
-    --gold-shimmer: 41 60% 60%;
+    --gold-shimmer: 43 80% 50%;
 
-    /* Muted - Subtle Grays */
-    --muted: 210 16% 93%;  /* #E2E8F0 */
-    --muted-foreground: 215 14% 48%;
+    /* Muted */
+    --muted: 220 14% 96%;
+    --muted-foreground: 220 9% 46%;
 
-    /* Accent - Historical Bronze */
+    /* Accent — Warm Bronze */
     --accent: 30 35% 45%;
     --accent-foreground: 0 0% 100%;
 
@@ -43,17 +39,16 @@ All colors MUST be HSL.
     --destructive: 0 72% 51%;
     --destructive-foreground: 0 0% 100%;
 
-    /* Borders & Inputs */
-    --border: 210 16% 93%;
-    --input: 210 16% 93%;
+    /* Borders & Inputs — subtle 1px */
+    --border: 220 13% 91%;
+    --input: 220 13% 91%;
     --ring: 125 32% 25%;
 
-    /* Border Radius */
-    --radius: 0.75rem;
+    --radius: 0.5rem;
 
-    /* Custom Historical Colors */
-    --parchment: 45 30% 94%;
-    --ink: 210 24% 16%;
+    /* Custom */
+    --parchment: 40 33% 97%;
+    --ink: 220 26% 14%;
     --leather: 30 25% 30%;
     
     /* Era Colors */
@@ -62,56 +57,50 @@ All colors MUST be HSL.
     --renaissance: 340 50% 50%;
     --modern: 160 45% 45%;
 
-    /* Gradients */
-    --gradient-primary: linear-gradient(135deg, hsl(125 32% 25%), hsl(125 32% 35%));
-    --gradient-gold: linear-gradient(135deg, hsl(41 48% 49%), hsl(41 60% 60%));
-    --gradient-hero: linear-gradient(180deg, transparent, rgba(0, 0, 0, 0.7));
-    
-    /* Shadows */
-    --shadow-card: 0 2px 8px rgba(0, 0, 0, 0.08);
-    --shadow-card-hover: 0 8px 24px rgba(0, 0, 0, 0.12);
-    --shadow-elegant: 0 10px 30px -10px rgba(44, 85, 48, 0.2);
+    /* Shadows — refined */
+    --shadow-card: 0 1px 3px rgba(0,0,0,0.04), 0 1px 2px rgba(0,0,0,0.06);
+    --shadow-card-hover: 0 10px 25px -5px rgba(0,0,0,0.08), 0 4px 10px -4px rgba(0,0,0,0.04);
+    --shadow-elegant: 0 20px 40px -15px rgba(0,0,0,0.1);
   }
 
   .dark {
-    /* Dark Mode - Reading at Night */
-    --background: 210 24% 12%;  /* Deep Charcoal */
-    --foreground: 37 30% 97%;
+    --background: 220 20% 10%;
+    --foreground: 40 20% 95%;
 
-    --card: 210 24% 16%;
-    --card-foreground: 37 30% 97%;
+    --card: 220 20% 13%;
+    --card-foreground: 40 20% 95%;
 
-    --popover: 210 24% 16%;
-    --popover-foreground: 37 30% 97%;
+    --popover: 220 20% 13%;
+    --popover-foreground: 40 20% 95%;
 
-    --primary: 125 32% 35%;
+    --primary: 125 32% 40%;
     --primary-foreground: 0 0% 100%;
-    --primary-light: 125 32% 45%;
+    --primary-light: 125 32% 50%;
 
-    --secondary: 41 48% 55%;
-    --secondary-foreground: 210 24% 12%;
-    --gold-shimmer: 41 60% 65%;
+    --secondary: 43 80% 50%;
+    --secondary-foreground: 220 20% 10%;
+    --gold-shimmer: 43 70% 60%;
 
-    --muted: 210 24% 20%;
-    --muted-foreground: 210 16% 63%;
+    --muted: 220 20% 18%;
+    --muted-foreground: 220 14% 60%;
 
     --accent: 30 35% 55%;
     --accent-foreground: 0 0% 100%;
 
-    --destructive: 0 62.8% 50%;
+    --destructive: 0 62% 50%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 210 24% 20%;
-    --input: 210 24% 20%;
-    --ring: 125 32% 45%;
+    --border: 220 20% 18%;
+    --input: 220 20% 18%;
+    --ring: 125 32% 50%;
 
-    --parchment: 210 24% 18%;
-    --ink: 37 30% 97%;
+    --parchment: 220 20% 14%;
+    --ink: 40 20% 95%;
     --leather: 30 25% 25%;
 
-    --shadow-card: 0 2px 8px rgba(0, 0, 0, 0.3);
-    --shadow-card-hover: 0 8px 24px rgba(0, 0, 0, 0.4);
-    --shadow-elegant: 0 10px 30px -10px rgba(182, 141, 64, 0.2);
+    --shadow-card: 0 1px 3px rgba(0,0,0,0.3);
+    --shadow-card-hover: 0 10px 25px -5px rgba(0,0,0,0.4);
+    --shadow-elegant: 0 20px 40px -15px rgba(184,134,11,0.15);
   }
 }
 
@@ -125,197 +114,99 @@ All colors MUST be HSL.
     font-feature-settings: "kern" 1, "liga" 1;
   }
 
-  /* Beautiful Typography */
   h1, h2, h3, h4, h5, h6 {
     @apply font-serif tracking-tight;
   }
 
-  /* Smooth Transitions */
-  .transition-smooth {
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  }
-
-  /* Card Hover Effect */
-  .card-hover {
-    @apply transition-smooth hover:scale-[1.02] hover:shadow-[var(--shadow-card-hover)];
-  }
-
-  /* Historical Paper Texture */
-  .paper-texture {
-    background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' /%3E%3C/filter%3E%3Crect width='100' height='100' filter='url(%23noise)' opacity='0.03' /%3E%3C/svg%3E");
-  }
-
-  /* Reading Experience - Book-like */
+  /* Reading prose */
   .prose-reading {
     @apply leading-relaxed;
     font-family: 'Georgia', 'Times New Roman', serif;
-    line-height: 1.8;
+    line-height: 1.85;
   }
 
   .prose-reading p {
     @apply mb-6 leading-relaxed;
-    text-align: justify;
-    text-justify: inter-word;
+    text-indent: 1.5em;
   }
 
-  .prose-reading h1,
-  .prose-reading h2,
-  .prose-reading h3,
-  .prose-reading h4 {
-    @apply font-serif font-bold mt-8 mb-4 text-foreground;
+  .prose-reading p:first-of-type {
+    text-indent: 0;
+  }
+
+  .prose-reading h1, .prose-reading h2, .prose-reading h3, .prose-reading h4 {
+    @apply font-serif font-bold mt-10 mb-5 text-foreground;
+    text-indent: 0;
     line-height: 1.3;
   }
 
-  .prose-reading h1 {
-    @apply text-3xl;
-  }
-
-  .prose-reading h2 {
-    @apply text-2xl text-primary;
-  }
-
-  .prose-reading h3 {
-    @apply text-xl;
-  }
-
-  .prose-reading h4 {
-    @apply text-lg;
-  }
+  .prose-reading h1 { @apply text-3xl; }
+  .prose-reading h2 { @apply text-2xl text-primary; }
+  .prose-reading h3 { @apply text-xl; }
+  .prose-reading h4 { @apply text-lg; }
 
   .prose-reading img {
-    @apply w-full max-w-2xl mx-auto my-8 rounded-lg shadow-lg;
+    @apply w-full max-w-2xl mx-auto my-10 rounded-lg;
+    box-shadow: var(--shadow-elegant);
     display: block;
   }
 
-  .prose-reading a {
-    @apply text-primary hover:underline;
-  }
+  .prose-reading a { @apply text-primary hover:underline; }
 
   .prose-reading blockquote {
-    @apply border-l-4 border-secondary pl-6 italic my-6 text-muted-foreground;
+    @apply border-l-4 border-secondary pl-6 italic my-8 text-muted-foreground;
     font-family: 'Courier New', monospace;
   }
 
-  /* Old Novel/Scroll Styling - Book-like */
+  /* Old novel page */
   .old-novel-page {
-    background: linear-gradient(
-      to bottom,
-      hsl(45 25% 92%) 0%,
-      hsl(45 30% 94%) 50%,
-      hsl(45 25% 92%) 100%
-    );
-    background-color: hsl(45 28% 93%);
-    padding: 2rem 1.5rem;
-    border-radius: 8px;
-    box-shadow: 
-      inset 0 0 60px rgba(139, 90, 43, 0.1),
-      0 0 20px rgba(0, 0, 0, 0.05),
-      0 0 1px rgba(139, 90, 43, 0.2);
-    position: relative;
-    border: 1px solid hsl(30 20% 85%);
-    width: 100%;
-    max-width: 800px;
+    background: linear-gradient(to bottom, hsl(40 33% 96%) 0%, hsl(40 33% 97%) 50%, hsl(40 33% 96%) 100%);
+    padding: 2.5rem 2rem;
+    border-radius: 0.5rem;
+    box-shadow: inset 0 0 60px rgba(139,90,43,0.06), 0 0 1px rgba(139,90,43,0.15);
+    border: 1px solid hsl(30 20% 88%);
+    max-width: 720px;
     margin: 0 auto;
   }
 
   @media (min-width: 640px) {
-    .old-novel-page {
-      padding: 3rem 2.5rem;
-    }
-  }
-
-  .old-novel-page::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-image: 
-      repeating-linear-gradient(
-        0deg,
-        transparent,
-        transparent 2px,
-        rgba(139, 90, 43, 0.03) 2px,
-        rgba(139, 90, 43, 0.03) 4px
-      ),
-      url("data:image/svg+xml,%3Csvg width='100' height='100' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' /%3E%3C/filter%3E%3Crect width='100' height='100' filter='url(%23noise)' opacity='0.04' /%3E%3C/svg%3E");
-    pointer-events: none;
-    border-radius: 8px;
+    .old-novel-page { padding: 3.5rem 3rem; }
   }
 
   .old-novel-page p {
-    position: relative;
-    z-index: 1;
     color: hsl(30 15% 20%);
-    text-shadow: 0 1px 1px rgba(255, 255, 255, 0.5);
   }
 
   .dark .old-novel-page {
-    background: linear-gradient(
-      to bottom,
-      hsl(30 20% 18%) 0%,
-      hsl(30 25% 20%) 50%,
-      hsl(30 20% 18%) 100%
-    );
-    background-color: hsl(30 22% 19%);
-    border-color: hsl(30 15% 25%);
-  }
-
-  .dark .old-novel-page::before {
-    background-image: 
-      repeating-linear-gradient(
-        0deg,
-        transparent,
-        transparent 2px,
-        rgba(139, 90, 43, 0.1) 2px,
-        rgba(139, 90, 43, 0.1) 4px
-      ),
-      url("data:image/svg+xml,%3Csvg width='100' height='100' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' /%3E%3C/filter%3E%3Crect width='100' height='100' filter='url(%23noise)' opacity='0.08' /%3E%3C/svg%3E");
+    background: linear-gradient(to bottom, hsl(30 15% 16%) 0%, hsl(30 18% 18%) 50%, hsl(30 15% 16%) 100%);
+    border-color: hsl(30 15% 22%);
   }
 
   .dark .old-novel-page p {
-    color: hsl(45 20% 85%);
-    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+    color: hsl(40 20% 85%);
   }
 
-  /* Loading Skeleton */
-  @keyframes shimmer {
-    0% { background-position: -1000px 0; }
-    100% { background-position: 1000px 0; }
-  }
+  /* Smooth scroll */
+  html { scroll-behavior: smooth; }
 
-  .skeleton {
-    animation: shimmer 2s infinite;
-    background: linear-gradient(
-      to right,
-      hsl(var(--muted)) 0%,
-      hsl(var(--muted-foreground) / 0.1) 50%,
-      hsl(var(--muted)) 100%
-    );
-    background-size: 1000px 100%;
-  }
-
-  /* Smooth Scroll */
-  html {
-    scroll-behavior: smooth;
-  }
-
-  /* Touch-friendly */
+  /* Touch targets */
   @media (hover: none) and (pointer: coarse) {
-    button, a {
-      min-height: 44px;
-      min-width: 44px;
-    }
+    button, a { min-height: 44px; min-width: 44px; }
   }
 
-  /* Hide Scrollbar */
+  /* Scrollbar hide */
   .scrollbar-hide {
     -ms-overflow-style: none;
     scrollbar-width: none;
   }
-  
-  .scrollbar-hide::-webkit-scrollbar {
-    display: none;
+  .scrollbar-hide::-webkit-scrollbar { display: none; }
+
+  /* Card hover */
+  .card-hover {
+    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  .card-hover:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-card-hover);
   }
 }
